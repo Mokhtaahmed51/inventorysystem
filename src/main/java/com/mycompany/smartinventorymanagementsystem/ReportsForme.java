@@ -28,39 +28,79 @@ public class ReportsForme extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel1_NAME_reportsform = new javax.swing.JLabel();
+        jLabel2_totalproduct_reportform = new javax.swing.JLabel();
+        jLabel3_outofstock_reportform = new javax.swing.JLabel();
+        jLabel4_totalsuppier_reportform = new javax.swing.JLabel();
+        jLabel5_totalstockvalue_reportform = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1_reportsform = new javax.swing.JTable();
+        jLabel6_valio_totalproduct_re = new javax.swing.JLabel();
+        jLabel8_valio_totalsupplir_re = new javax.swing.JLabel();
+        jLabel9_valio_totalstockvalue_re = new javax.swing.JLabel();
+        jLabel10_valio_outofstock_re = new javax.swing.JLabel();
+        jButton1_excel_re = new javax.swing.JButton();
+        jButton2_print_re = new javax.swing.JButton();
+        jButton3_refresh_re = new javax.swing.JButton();
+        jButton4_back_re = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 102));
 
-        jLabel1.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
-        jLabel1.setText("Reports Forme");
+        jLabel1_NAME_reportsform.setFont(new java.awt.Font("Inter", 1, 16)); // NOI18N
+        jLabel1_NAME_reportsform.setText("Reports Forme");
 
-        jLabel2.setText("jLabel2");
+        jLabel2_totalproduct_reportform.setText("Total Product");
 
-        jLabel3.setText("jLabel3");
+        jLabel3_outofstock_reportform.setText("Out of Stock");
 
-        jLabel4.setText("jLabel4");
+        jLabel4_totalsuppier_reportform.setText("Total Suppliers");
 
-        jLabel5.setText("jLabel5");
+        jLabel5_totalstockvalue_reportform.setText("Total Stock value");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1_reportsform.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Product Name", "Quantity", "Unit Price", "Supplier", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable1_reportsform);
+
+        jLabel6_valio_totalproduct_re.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel6_valio_totalproduct_re.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel6_valio_totalproduct_re.setText("valio");
+
+        jLabel8_valio_totalsupplir_re.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel8_valio_totalsupplir_re.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel8_valio_totalsupplir_re.setText("valio3");
+
+        jLabel9_valio_totalstockvalue_re.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel9_valio_totalstockvalue_re.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel9_valio_totalstockvalue_re.setText("valio4");
+
+        jLabel10_valio_outofstock_re.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel10_valio_outofstock_re.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel10_valio_outofstock_re.setText("valio2");
+
+        jButton1_excel_re.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1_excel_re.setForeground(new java.awt.Color(51, 51, 51));
+        jButton1_excel_re.setText("Excel");
+        jButton1_excel_re.addActionListener(this::jButton1_excel_reActionPerformed);
+
+        jButton2_print_re.setBackground(new java.awt.Color(153, 153, 153));
+        jButton2_print_re.setText("Print");
+
+        jButton3_refresh_re.setBackground(new java.awt.Color(153, 153, 153));
+        jButton3_refresh_re.setText("Refresh");
+        jButton3_refresh_re.addActionListener(this::jButton3_refresh_reActionPerformed);
+
+        jButton4_back_re.setBackground(new java.awt.Color(153, 153, 153));
+        jButton4_back_re.setText("<-  Back");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,43 +108,83 @@ public class ReportsForme extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabel1_NAME_reportsform)
                 .addGap(391, 391, 391))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2_totalproduct_reportform)
+                    .addComponent(jLabel3_outofstock_reportform)
+                    .addComponent(jLabel4_totalsuppier_reportform)
+                    .addComponent(jLabel5_totalstockvalue_reportform))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10_valio_outofstock_re)
+                    .addComponent(jLabel6_valio_totalproduct_re)
+                    .addComponent(jLabel8_valio_totalsupplir_re)
+                    .addComponent(jLabel9_valio_totalstockvalue_re))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4_back_re, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(178, 178, 178)
+                        .addComponent(jButton3_refresh_re)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2_print_re)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1_excel_re)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1_NAME_reportsform)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(jLabel2)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel3)
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2_totalproduct_reportform)
+                            .addComponent(jLabel6_valio_totalproduct_re))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3_outofstock_reportform)
+                            .addComponent(jLabel10_valio_outofstock_re))
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4_totalsuppier_reportform)
+                            .addComponent(jLabel8_valio_totalsupplir_re))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5_totalstockvalue_reportform)
+                            .addComponent(jLabel9_valio_totalstockvalue_re))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))))
+                        .addGap(18, 18, 18)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1_excel_re)
+                        .addComponent(jButton3_refresh_re)
+                        .addComponent(jButton2_print_re))
+                    .addComponent(jButton4_back_re))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1_excel_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_excel_reActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1_excel_reActionPerformed
+
+    private void jButton3_refresh_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3_refresh_reActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3_refresh_reActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,12 +212,20 @@ public class ReportsForme extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jButton1_excel_re;
+    private javax.swing.JButton jButton2_print_re;
+    private javax.swing.JButton jButton3_refresh_re;
+    private javax.swing.JButton jButton4_back_re;
+    private javax.swing.JLabel jLabel10_valio_outofstock_re;
+    private javax.swing.JLabel jLabel1_NAME_reportsform;
+    private javax.swing.JLabel jLabel2_totalproduct_reportform;
+    private javax.swing.JLabel jLabel3_outofstock_reportform;
+    private javax.swing.JLabel jLabel4_totalsuppier_reportform;
+    private javax.swing.JLabel jLabel5_totalstockvalue_reportform;
+    private javax.swing.JLabel jLabel6_valio_totalproduct_re;
+    private javax.swing.JLabel jLabel8_valio_totalsupplir_re;
+    private javax.swing.JLabel jLabel9_valio_totalstockvalue_re;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable1_reportsform;
     // End of variables declaration//GEN-END:variables
 }
