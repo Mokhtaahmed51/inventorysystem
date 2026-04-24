@@ -31,7 +31,6 @@ public class DashboardForm extends javax.swing.JFrame {
         btnProducts_dashboard = new javax.swing.JButton();
         btnSuppliers_dashboard = new javax.swing.JButton();
         btnReports_dashboard = new javax.swing.JButton();
-        jbtnsetting_dashboard = new javax.swing.JButton();
         Status_Bar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,9 +45,6 @@ public class DashboardForm extends javax.swing.JFrame {
 
         btnReports_dashboard.setText("Reports");
 
-        jbtnsetting_dashboard.setText("Settings");
-        jbtnsetting_dashboard.addActionListener(this::jbtnsetting_dashboardActionPerformed);
-
         Status_Bar.setText("Status Bar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -56,7 +52,7 @@ public class DashboardForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 132, Short.MAX_VALUE)
+                .addGap(0, 120, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -66,8 +62,7 @@ public class DashboardForm extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnSuppliers_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnProducts_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnsetting_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(128, 128, 128))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -85,19 +80,13 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(btnSuppliers_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnsetting_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(Status_Bar)
                 .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jbtnsetting_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnsetting_dashboardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbtnsetting_dashboardActionPerformed
 
     private void btnSuppliers_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliers_dashboardActionPerformed
         // TODO add your handling code here:
@@ -134,6 +123,5 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton btnReports_dashboard;
     private javax.swing.JButton btnSuppliers_dashboard;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JButton jbtnsetting_dashboard;
     // End of variables declaration//GEN-END:variables
 }
