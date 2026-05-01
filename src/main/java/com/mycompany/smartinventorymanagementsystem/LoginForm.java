@@ -4,6 +4,8 @@
  */
 package com.mycompany.smartinventorymanagementsystem;
 
+import SmartInventoryManagementSystem.MyConnection;
+
 /**
  *
  * @author mokhtar
@@ -47,6 +49,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPasswordField1_login.setText("jPasswordField1");
 
         jButtonSignin.setText("Sign in");
+        jButtonSignin.addActionListener(this::jButtonSigninActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -90,9 +93,48 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsername_loginActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButtonSigninActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSigninActionPerformed
+
+        // TODO add your handling code here:
+        
+        try {
+    // 1. استدعاء الاتصال من كلاس MyConnection
+    // ملحوظة: لو MyConnection في باكيدج تانية، نتبينز هيطلب منك Import
+    java.sql.Connection con = MyConnection.getConnection();
+    
+    // 2. تجهيز الاستعلام
+    String sql = "SELECT * FROM users WHERE username=? AND password=?";
+    java.sql.PreparedStatement ps = con.prepareStatement(sql);
+    
+    // 3. ربط الخانات اللي في الفورم بالكود
+    // تأكد إن jTextField1 هو بتاع اليوزر و jPasswordField1 بتاع الباسورد
+    ps.setString(1, jTextFieldUsername_login.getText()); 
+    ps.setString(2, String.valueOf(jPasswordField1_login.getPassword()));
+    
+    // 4. تشغيل البحث
+    java.sql.ResultSet rs = ps.executeQuery();
+    
+    if (rs.next()) {
+        // لو لقى اليوزر (admin / admin123)
+        javax.swing.JOptionPane.showMessageDialog(null, "تم تسجيل الدخول بنجاح!");
+        
+        // فتح الصفحة الرئيسية وقفل اللوجن
+        DashboardForm dash = new DashboardForm();
+        dash.setVisible(true);
+        this.dispose(); 
+    } else {
+        // لو البيانات غلط
+        javax.swing.JOptionPane.showMessageDialog(null, "اسم المستخدم أو كلمة السر خطأ", "تنبيه", 2);
+    }
+    
+}
+        catch (Exception e) {
+    // لو فيه مشكلة في السيرفر أو القاعدة
+    javax.swing.JOptionPane.showMessageDialog(null, "مشكلة في الاتصال: " + e.getMessage());
+
+    }//GEN-LAST:event_jButtonSigninActionPerformed
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
