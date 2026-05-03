@@ -36,16 +36,19 @@ public class DashboardForm extends javax.swing.JFrame {
         Status_Bar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 550));
 
         jLabel2.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         jLabel2.setText("Control Panel");
 
         btnProducts_dashboard.setText("Products");
+        btnProducts_dashboard.addActionListener(this::btnProducts_dashboardActionPerformed);
 
         btnSuppliers_dashboard.setText("Suppliers");
         btnSuppliers_dashboard.addActionListener(this::btnSuppliers_dashboardActionPerformed);
 
         btnReports_dashboard.setText("Reports");
+        btnReports_dashboard.addActionListener(this::btnReports_dashboardActionPerformed);
 
         Status_Bar.setText("Status Bar");
 
@@ -54,35 +57,34 @@ public class DashboardForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 120, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(232, 232, 232))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnSuppliers_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnProducts_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(128, 128, 128))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Status_Bar)
                 .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSuppliers_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnProducts_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(jLabel2)))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2)
-                .addGap(80, 80, 80)
+                .addGap(58, 58, 58)
                 .addComponent(btnProducts_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSuppliers_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(Status_Bar)
                 .addGap(28, 28, 28))
         );
@@ -92,7 +94,24 @@ public class DashboardForm extends javax.swing.JFrame {
 
     private void btnSuppliers_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliers_dashboardActionPerformed
         // TODO add your handling code here:
+        Suppliersform sup = new Suppliersform(); // اتأكد من الاسم بالظبط زي ما هو في المشروع
+sup.setVisible(true);
+sup.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnSuppliers_dashboardActionPerformed
+
+    private void btnProducts_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProducts_dashboardActionPerformed
+        // TODO add your handling code here:
+        ProductsForm prd = new ProductsForm(); // إنشاء نسخة من صفحة المنتجات
+prd.setVisible(true); // إظهار الصفحة
+prd.setLocationRelativeTo(null); // عشان تفتح في نص الشاشة بالضبط
+    }//GEN-LAST:event_btnProducts_dashboardActionPerformed
+
+    private void btnReports_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReports_dashboardActionPerformed
+        // TODO add your handling code here:
+        ReportsForme rep = new ReportsForme(); // لاحظ إن الاسم عندك فيه حرف e في الآخر
+rep.setVisible(true);
+rep.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnReports_dashboardActionPerformed
 
     /**
      * @param args the command line arguments

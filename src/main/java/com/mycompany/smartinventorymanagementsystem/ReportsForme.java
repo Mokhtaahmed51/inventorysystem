@@ -4,11 +4,14 @@
  */
 package com.mycompany.smartinventorymanagementsystem;
 
+import SmartInventoryManagementSystem.MyConnection;
+import java.sql.SQLException;
+
 /**
  *
  * @author mokhtar
  */
-public class ReportsForme extends javax.swing.JFrame {
+public final class ReportsForme extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReportsForme.class.getName());
 
@@ -16,8 +19,11 @@ public class ReportsForme extends javax.swing.JFrame {
      * Creates new form ReportsForme
      */
     public ReportsForme() {
-        initComponents();
-    }
+    initComponents();
+    // كود الربط الفعلي
+    updateStatistics(); 
+    showReportTable();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,6 +100,7 @@ public class ReportsForme extends javax.swing.JFrame {
 
         jButton2_print_re.setBackground(new java.awt.Color(153, 153, 153));
         jButton2_print_re.setText("Print");
+        jButton2_print_re.addActionListener(this::jButton2_print_reActionPerformed);
 
         jButton3_refresh_re.setBackground(new java.awt.Color(153, 153, 153));
         jButton3_refresh_re.setText("Refresh");
@@ -101,6 +108,7 @@ public class ReportsForme extends javax.swing.JFrame {
 
         jButton4_back_re.setBackground(new java.awt.Color(153, 153, 153));
         jButton4_back_re.setText("<-  Back");
+        jButton4_back_re.addActionListener(this::jButton4_back_reActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,11 +188,61 @@ public class ReportsForme extends javax.swing.JFrame {
 
     private void jButton1_excel_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_excel_reActionPerformed
         // TODO add your handling code here:
+        try {
+    javax.swing.JFileChooser jFileChooser = new javax.swing.JFileChooser();
+    jFileChooser.showSaveDialog(this);
+    java.io.File saveFile = jFileChooser.getSelectedFile();
+
+    if (saveFile != null) {
+        saveFile = new java.io.File(saveFile.toString() + ".xls");
+        try (java.io.FileWriter fw = new java.io.FileWriter(saveFile); java.io.BufferedWriter bw = new java.io.BufferedWriter(fw)) {
+            
+            // كتابة عناوين الأعمدة
+            for (int i = 0; i < jTable1_reportsform.getColumnCount(); i++) {
+                bw.write(jTable1_reportsform.getColumnName(i) + "\t");
+            }
+            bw.newLine();
+            
+            // كتابة بيانات الصفوف
+            for (int i = 0; i < jTable1_reportsform.getRowCount(); i++) {
+                for (int j = 0; j < jTable1_reportsform.getColumnCount(); j++) {
+                    bw.write(jTable1_reportsform.getValueAt(i, j).toString() + "\t");
+                }
+                bw.newLine();
+            }
+            
+        }
+        javax.swing.JOptionPane.showMessageDialog(null, "تم تصدير الملف بنجاح!");
+    }
+} catch (java.io.IOException e) {
+    System.out.println(e);
+}
     }//GEN-LAST:event_jButton1_excel_reActionPerformed
 
     private void jButton3_refresh_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3_refresh_reActionPerformed
         // TODO add your handling code here:
+        updateStatistics();
+showReportTable();
     }//GEN-LAST:event_jButton3_refresh_reActionPerformed
+
+    private void jButton4_back_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4_back_reActionPerformed
+        // TODO add your handling code here:
+        new DashboardForm().setVisible(true); // تأكد من اسم شاشة الداشبورد عندك
+this.dispose();
+    }//GEN-LAST:event_jButton4_back_reActionPerformed
+
+    private void jButton2_print_reActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2_print_reActionPerformed
+        // TODO add your handling code here:
+        try {
+    // جلب موديل الجدول لطباعته
+    boolean complete = jTable1_reportsform.print();
+    if (complete) {
+        javax.swing.JOptionPane.showMessageDialog(null, "تمت عملية الطباعة بنجاح", "طباعة", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }
+} catch (java.awt.print.PrinterException e) {
+    javax.swing.JOptionPane.showMessageDialog(null, "خطأ في الطباعة: " + e.getMessage());
+}
+    }//GEN-LAST:event_jButton2_print_reActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,4 +286,64 @@ public class ReportsForme extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1_reportsform;
     // End of variables declaration//GEN-END:variables
+
+// انزل تحت خالص في الملف قبل آخر قوس }
+    
+   public void updateStatistics() {
+    try {
+        java.sql.Connection con = MyConnection.getConnection();
+        java.sql.Statement st = con.createStatement();
+        
+        // 1. إجمالي المنتجات
+        java.sql.ResultSet rs1 = st.executeQuery("SELECT COUNT(*) AS total FROM products");
+        if(rs1.next()) jLabel6_valio_totalproduct_re.setText(String.valueOf(rs1.getInt("total")));
+        
+        // 2. المنتجات المنتهية (الكمية صفر) - تأكد أن العمود اسمه quantity
+        java.sql.ResultSet rs2 = st.executeQuery("SELECT COUNT(*) AS out_stock FROM products WHERE quantity = 0");
+        if(rs2.next()) jLabel10_valio_outofstock_re.setText(String.valueOf(rs2.getInt("out_stock")));
+        
+        // 3. إجمالي الموردين (العمود اسمه name في جدولك)
+        java.sql.ResultSet rs3 = st.executeQuery("SELECT COUNT(*) AS total_supp FROM suppliers");
+        if(rs3.next()) jLabel8_valio_totalsupplir_re.setText(String.valueOf(rs3.getInt("total_supp")));
+        
+        // 4. إجمالي قيمة المخزن (السعر * الكمية)
+        java.sql.ResultSet rs4 = st.executeQuery("SELECT SUM(price * quantity) AS total_val FROM products");
+        if(rs4.next()) jLabel9_valio_totalstockvalue_re.setText(String.valueOf(rs4.getDouble("total_val")));
+        
+    } catch (SQLException e) {
+        System.out.println("Error Statistics: " + e.getMessage());
+    }}
+   
+   public void showReportTable() {
+    try {
+        java.sql.Connection con = MyConnection.getConnection();
+        // بنختار الأعمدة بالأسامي الصح اللي في قاعدة بياناتك
+        String sql = "SELECT product_name, quantity, price, category FROM products";
+        java.sql.PreparedStatement ps = con.prepareStatement(sql);
+        java.sql.ResultSet rs = ps.executeQuery();
+        
+        // اتأكد إن اسم الجدول هنا هو نفس اللي في الديزاين (غالباً jTable1_reportsform)
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1_reportsform.getModel();
+        model.setRowCount(0); // تصفير الجدول قبل العرض
+        
+        while(rs.next()) {
+            int qty = rs.getInt("quantity");
+            String status = (qty > 0) ? "Available" : "Out of Stock";
+            
+            Object[] row = {
+                rs.getString("product_name"),
+                qty,
+                rs.getDouble("price"),
+                rs.getString("category"),
+                status
+            };
+            model.addRow(row);
+        }
+    } catch (SQLException e) {
+        System.out.println("Error Show Table: " + e.getMessage());
+    }
 }
+   }
+
+
+

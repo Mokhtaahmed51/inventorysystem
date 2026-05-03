@@ -262,6 +262,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Print"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2_print_reActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton3_refresh_re">
       <Properties>
@@ -281,6 +284,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;-  Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4_back_reActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

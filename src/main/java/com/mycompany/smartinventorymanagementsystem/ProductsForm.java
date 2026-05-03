@@ -4,20 +4,30 @@
  */
 package com.mycompany.smartinventorymanagementsystem;
 
+import SmartInventoryManagementSystem.MyConnection;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+
 /**
  *
  * @author mokhtar
  */
-public class ProductsForm extends javax.swing.JFrame {
+public final class ProductsForm extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProductsForm.class.getName());
 
     /**
      * Creates new form ProductsForm
      */
-    public ProductsForm() {
-        initComponents();
-    }
+   
+        public ProductsForm() {
+    initComponents();
+    showProducts(); // دي هتخلي الجدول يتملي بيانات أول ما تفتح الصفحة
+    this.setLocationRelativeTo(null); // عشان تفتح في النص
+     
+        }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +47,9 @@ public class ProductsForm extends javax.swing.JFrame {
         jTextFieldProQuantity = new javax.swing.JTextField();
         jTextFieldProPrice = new javax.swing.JTextField();
         jComboBox1_productform = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,61 +69,83 @@ public class ProductsForm extends javax.swing.JFrame {
         jButtonProSave.setBackground(new java.awt.Color(0, 204, 51));
         jButtonProSave.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProSave.setText("Save");
+        jButtonProSave.addActionListener(this::jButtonProSaveActionPerformed);
 
         jButtonProUpdate.setBackground(new java.awt.Color(0, 102, 255));
         jButtonProUpdate.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProUpdate.setText("Update");
+        jButtonProUpdate.addActionListener(this::jButtonProUpdateActionPerformed);
 
         jButtonproDelete.setBackground(new java.awt.Color(204, 0, 0));
         jButtonproDelete.setText("Delete");
-
-        jTextFieldProProuductname.setText("Product Name");
-
-        jTextFieldProQuantity.setText("Quantity");
-
-        jTextFieldProPrice.setText("Price");
+        jButtonproDelete.addActionListener(this::jButtonproDeleteActionPerformed);
 
         jComboBox1_productform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1_productform.addActionListener(this::jComboBox1_productformActionPerformed);
+
+        jLabel1.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel1.setText("product Name");
+
+        jLabel2.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel2.setText("Quantity");
+
+        jLabel3.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N
+        jLabel3.setText("Price");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonproDelete)
-                .addGap(15, 15, 15)
-                .addComponent(jButtonProUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonProSave)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldProProuductname, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .addComponent(jTextFieldProQuantity)
+                    .addComponent(jTextFieldProQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                    .addComponent(jTextFieldProProuductname)
                     .addComponent(jTextFieldProPrice))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jComboBox1_productform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonproDelete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonProUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonProSave)
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldProProuductname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldProQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1_productform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldProProuductname, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldProPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jComboBox1_productform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldProQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldProPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -126,6 +161,101 @@ public class ProductsForm extends javax.swing.JFrame {
     private void jComboBox1_productformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_productformActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1_productformActionPerformed
+
+    private void jButtonProSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProSaveActionPerformed
+        // TODO add your handling code here:
+        try {
+    java.sql.Connection con = MyConnection.getConnection();
+String sql = "INSERT INTO products (product_name, category, price, quantity) VALUES (?, ?, ?, ?)";    java.sql.PreparedStatement ps = con.prepareStatement(sql);
+    
+    // ربط الخانات اللي في الفورم بالكود
+    ps.setString(1, jTextFieldProProuductname.getText());
+    ps.setString(2, jComboBox1_productform.getSelectedItem().toString());
+    ps.setDouble(3, Double.parseDouble(jTextFieldProPrice.getText()));
+    ps.setInt(4, Integer.parseInt(jTextFieldProQuantity.getText()));
+    
+    ps.executeUpdate(); // تنفيذ الإضافة في الداتا بيز
+    
+    javax.swing.JOptionPane.showMessageDialog(null, "تم حفظ المنتج بنجاح!");
+    
+    showProducts(); // تحديث الجدول فوراً عشان تشوف المنتج اللي ضفته
+    
+} catch (HeadlessException | NumberFormatException | SQLException e) {
+    javax.swing.JOptionPane.showMessageDialog(null, "خطأ في الحفظ: " + e.getMessage());
+}
+    }//GEN-LAST:event_jButtonProSaveActionPerformed
+
+    private void jButtonproDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonproDeleteActionPerformed
+        // TODO add your handling code here:
+        try {
+    // 1. الحصول على رقم الصف المختار من الجدول
+    int rowIndex = jTable1_productform.getSelectedRow();
+    
+    // تأكد إن المستخدم اختار صف فعلاً
+    if (rowIndex == -1) {
+        javax.swing.JOptionPane.showMessageDialog(null, "من فضلك اختر منتجاً من الجدول أولاً");
+        return;
+    }
+    
+    // 2. الحصول على الـ ID الخاص بالمنتج (الموجود في أول عمود رقم 0)
+    String id = jTable1_productform.getValueAt(rowIndex, 0).toString();
+    
+    // 3. تأكيد المسح من المستخدم (خطوة أمان)
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(null, "هل أنت متأكد من حذف هذا المنتج؟", "تأكيد الحذف", javax.swing.JOptionPane.YES_NO_OPTION);
+    
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+        java.sql.Connection con = MyConnection.getConnection();
+        String sql = "DELETE FROM products WHERE id = ?"; // المسح بناءً على الـ ID
+        java.sql.PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, id);
+        
+        ps.executeUpdate();
+        javax.swing.JOptionPane.showMessageDialog(null, "تم حذف المنتج بنجاح");
+        
+        // 4. تحديث الجدول فوراً عشان يختفي السطر اللي اتمسح
+        showProducts();
+    }
+    
+} catch (HeadlessException | SQLException e) {
+    javax.swing.JOptionPane.showMessageDialog(null, "خطأ في الحذف: " + e.getMessage());
+}
+    }//GEN-LAST:event_jButtonproDeleteActionPerformed
+
+    private void jButtonProUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProUpdateActionPerformed
+        // TODO add your handling code here:
+        try {
+    // 1. الحصول على الـ ID من الصف المختار في الجدول
+    int rowIndex = jTable1_productform.getSelectedRow();
+    
+    if (rowIndex == -1) {
+        javax.swing.JOptionPane.showMessageDialog(null, "من فضلك اختر المنتج اللي عايز تعدله من الجدول أولاً");
+        return;
+    }
+    
+    String id = jTable1_productform.getValueAt(rowIndex, 0).toString(); // الحصول على ID المنتج
+
+    // 2. الاتصال وتجهيز جملة التعديل بأسامي أعمدة قاعدة بياناتك
+    java.sql.Connection con = MyConnection.getConnection();
+    String sql = "UPDATE products SET product_name=?, category=?, price=?, quantity=? WHERE id=?";
+    java.sql.PreparedStatement ps = con.prepareStatement(sql);
+
+    // 3. ربط الخانات (Fields) بالقيم الجديدة
+    ps.setString(1, jTextFieldProProuductname.getText());
+    ps.setString(2, jComboBox1_productform.getSelectedItem().toString());
+    ps.setDouble(3, Double.parseDouble(jTextFieldProPrice.getText()));
+    ps.setInt(4, Integer.parseInt(jTextFieldProQuantity.getText()));
+    ps.setString(5, id); // ربط الـ ID عشان يعدل الصف ده بس
+
+    // 4. تنفيذ التعديل وتحديث الجدول
+    ps.executeUpdate();
+    javax.swing.JOptionPane.showMessageDialog(null, "تم تحديث بيانات المنتج بنجاح");
+    
+    showProducts(); // تحديث الجدول فوراً عشان تشوف التعديل
+
+} catch (HeadlessException | NumberFormatException | SQLException e) {
+    javax.swing.JOptionPane.showMessageDialog(null, "خطأ في التعديل: " + e.getMessage());
+}
+    }//GEN-LAST:event_jButtonProUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,20 +277,51 @@ public class ProductsForm extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+    
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ProductsForm().setVisible(true));
+java.awt.EventQueue.invokeLater(() -> new ProductsForm().setVisible(true));
+    
     }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonProSave;
     private javax.swing.JButton jButtonProUpdate;
     private javax.swing.JButton jButtonproDelete;
     private javax.swing.JComboBox<String> jComboBox1_productform;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1_productform;
     private javax.swing.JTextField jTextFieldProPrice;
     private javax.swing.JTextField jTextFieldProProuductname;
     private javax.swing.JTextField jTextFieldProQuantity;
     // End of variables declaration//GEN-END:variables
-}
+
+public void showProducts() {
+    try {
+        java.sql.Connection con = MyConnection.getConnection();
+        java.sql.Statement st = con.createStatement();
+        java.sql.ResultSet rs = st.executeQuery("SELECT * FROM products");
+        
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1_productform.getModel();
+        model.setRowCount(0); 
+        
+        while(rs.next()) {
+            Object[] row = {
+                rs.getInt("id"),
+                rs.getString("product_name"),
+                rs.getInt("quantity"),
+                rs.getDouble("price"),
+                rs.getString("category")
+            };
+            // السطر اللي كان ناقص عشان البيانات تظهر فعلياً في الجدول:
+            model.addRow(row); 
+        }
+    } catch (SQLException e) {
+        javax.swing.JOptionPane.showMessageDialog(null, "خطأ في عرض البيانات: " + e.getMessage());
+    }
+}}
+
