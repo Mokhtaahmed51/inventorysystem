@@ -61,7 +61,7 @@
               <Component id="btnSuppliers_dashboard" min="-2" pref="31" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnReports_dashboard" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace pref="135" max="32767" attributes="0"/>
+              <EmptySpace pref="152" max="32767" attributes="0"/>
               <Component id="Status_Bar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
@@ -102,9 +102,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="Status_Bar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Status Bar"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

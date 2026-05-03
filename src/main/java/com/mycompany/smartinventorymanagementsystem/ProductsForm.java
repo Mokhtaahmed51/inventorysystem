@@ -80,7 +80,7 @@ public final class ProductsForm extends javax.swing.JFrame {
         jButtonproDelete.setText("Delete");
         jButtonproDelete.addActionListener(this::jButtonproDeleteActionPerformed);
 
-        jComboBox1_productform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1_productform.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dairy", "electronics", "tools", " " }));
         jComboBox1_productform.addActionListener(this::jComboBox1_productformActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Inter", 1, 13)); // NOI18N

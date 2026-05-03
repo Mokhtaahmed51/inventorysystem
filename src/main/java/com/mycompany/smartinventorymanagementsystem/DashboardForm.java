@@ -50,8 +50,6 @@ public class DashboardForm extends javax.swing.JFrame {
         btnReports_dashboard.setText("Reports");
         btnReports_dashboard.addActionListener(this::btnReports_dashboardActionPerformed);
 
-        Status_Bar.setText("Status Bar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +82,7 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addComponent(btnSuppliers_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnReports_dashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                 .addComponent(Status_Bar)
                 .addGap(28, 28, 28))
         );
